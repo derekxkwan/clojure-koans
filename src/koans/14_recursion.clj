@@ -10,14 +10,16 @@
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      acc
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (let [n (count coll)]
+    (if (<= n 0) coll (cons (last coll) (recursive-reverse (butlast coll))))))
 
 (defn factorial [n]
-  __)
+  (loop [n n prod 1]
+    (if (<= n 1) prod (recur (dec n) (* prod n)))))
 
 (meditations
   "Recursion ends with a base case"
